@@ -1,0 +1,47 @@
+<section class="areaLogin">
+ 
+  <ng-template [ngIf]="!log">
+    <div class="divForm">
+      <p class="titulo">Faça Login</p>
+      
+        <input type="text" id="name" class="inputLogin" placeholder="Nome" autofocus [(ngModel)]="usuario">
+        <br>
+        <input type="password" id="password" class="inputLogin" placeholder="Senha" [(ngModel)]="senha">
+        <br>
+        <input type="submit" class="buttonLogin" value="entrar" (click)="login()">
+      
+      <p>Ainda não tem uma conta?<a href="#">Criar conta</a></p>
+    </div>
+  </ng-template>
+  
+
+  <div *ngIf="log">
+    
+    <div class="divFormCadastro">
+      <p class="title">Cadastre seu número</p>
+      
+        <input type="text" id="nome" class="inputCad" placeholder="Nome" autofocus [(ngModel)]="usuario">
+        <br>
+        <input type="number" id="telefone" class="inputCad" placeholder="Telefone" [(ngModel)]="telefone">
+        <br>
+        <input type="submit" class="buttonCad" value="cadastrar" (click)="cadastro()">
+        <!-- <input type="submit" class="buttonCad" value="deletar" (click)="delete()"> -->
+    </div>
+  
+    <div class="divFormListar">
+      <p class="title">Lista de Contatos</p>
+      <button type="submit" class="buttonList" (click)="listar()">Listar</button>
+  
+      <table >
+        <tr *ngFor="let pessoa of pessoas"> 
+          <td> {{pessoa.nome}} </td>  
+          <td> {{pessoa.telefone}} </td>  
+          <td (click)="delete(pessoa.idcadastro)">❌</td>
+        </tr>
+      </table>
+    </div>
+
+  </div> 
+
+
+</section>
